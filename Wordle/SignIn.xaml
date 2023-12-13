@@ -12,7 +12,7 @@
             HorizontalOptions="Center"/>
 
         <Label 
-            Text="If you have an account and would like to sign into then enter your details to continue\nIf you dont have an account and would like to create on then please enter your details and continue" 
+            Text="If you have an account and would like to sign into then enter your details to continue. If you dont have an account and would like to create on then please enter your details and continue" 
             FontSize="12" FontAttributes="Bold"
             VerticalOptions="Center"
             HorizontalOptions="Center"
