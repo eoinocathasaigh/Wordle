@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wordle.MainPage"
+             Title="Welcome to Wordle">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="30"
+            Padding="20"
+            VerticalOptions="Center">
+            
+            <!--Content of our main page-->
+            <Image Source="gametitle.png"
+                   HeightRequest="200"/>
+
+            <Button x:Name="signInbtn" Text="Sign In?" Clicked="signIn"
+                    WidthRequest="100"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

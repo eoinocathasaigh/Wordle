@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wordle.SignIn"
+             Title="Sign In or Sign Up">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to the sign in page!"
+            FontSize="20"
+            FontAttributes="Bold, Italic"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+
+        <Label 
+            Text="If you have an account and would like to sign into then enter your details to continue. If you dont have an account and would like to create on then please enter your details and continue" 
+            FontSize="12" FontAttributes="Bold"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            WidthRequest="400"/>
+
+        <Button x:Name="Continue" Text="Save Details" Clicked="Save_Clicked" 
+                WidthRequest="200"/>
+    </VerticalStackLayout>
+</ContentPage>
