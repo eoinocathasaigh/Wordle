@@ -52,7 +52,11 @@
 	  <None Remove="Resources\AppIcon\appiconfig.svg" />
 	  <None Remove="Resources\Images\emptybanner.svg" />
 	  <None Remove="Resources\Images\gametitle.svg" />
+	  <None Remove="Resources\Images\lockicon.svg" />
 	  <None Remove="Resources\Images\mainbanner.svg" />
+	  <None Remove="Resources\Images\signinheader.svg" />
+	  <None Remove="Resources\Images\usericon.svg" />
+	  <None Remove="Resources\Images\wordlelogo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
