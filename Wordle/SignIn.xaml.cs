@@ -5,6 +5,7 @@ public partial class SignIn : ContentPage
 	//Initializing variables for this particular class and the others that may need them
 	public string userName;
 	private string userPass;
+	private string userFile;
 
 	public SignIn()
 	{
@@ -15,5 +16,6 @@ public partial class SignIn : ContentPage
     {
 		userName = name.Text;
 		userPass = password.Text;
+		userFile = userName + ".txt";
     }
 }
