@@ -20,7 +20,7 @@
                 <Image Source="usericon.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Margin="-20,0,0,0" HorizontalOptions="FillAndExpand" BorderColor="White" HasShadow="True" HeightRequest="45" Padding="0">
-                <Entry Placeholder="Username" VerticalOptions="Center" Keyboard="Email" Margin="20,0,0,0"/>
+                <Entry x:Name="name" Placeholder="Username" VerticalOptions="Center" Keyboard="Email" Margin="20,0,0,0"/>
             </Frame>
         </StackLayout>
 
@@ -29,7 +29,7 @@
                 <Image Source="lockicon.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Margin="-20,0,0,0" HorizontalOptions="FillAndExpand" BorderColor="White" HasShadow="True" HeightRequest="45" Padding="0">
-                <Entry Placeholder="password" IsPassword="True" VerticalOptions="Center" Keyboard="Email" Margin="20,0,0,0"/>
+                <Entry x:Name="password" Placeholder="password" IsPassword="True" VerticalOptions="Center" Keyboard="Email" Margin="20,0,0,0"/>
             </Frame>
         </StackLayout>
 
