@@ -7,15 +7,11 @@
         VerticalOptions="Center"
         Spacing="30"
         Padding="20">
-        
-        <Label 
-            Text="Welcome to Wordle!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="The wild and wonderful word game!"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
+
+        <VerticalStackLayout>
+            <Label Text="Welcome to Wordle" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Label Text="The Family Fun Guessing Game" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
 
         <!--Content of our main page-->
         <Image Source="mainbanner.png"

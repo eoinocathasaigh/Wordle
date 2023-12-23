@@ -7,14 +7,15 @@
         private List<string> gameWords;
         HttpClient http;
         private string userGuess;
+        private string correctWord;
         private int gamesPlayed;
         public string userName;
         private string password;
-        public int userFile;
-
+        public string targetFile;
         public MainPage()
         {
             InitializeComponent();
+            Title = "Welcome : " + userName;
         }
 
         public async Task getGameWords()
@@ -58,6 +59,12 @@
             }
         }
 
+        public void getRandWord()
+        {
+            rand = new Random();
+            correctWord = gameWords[rand.Next(gameWords.Count)];
+
+        }
         private void signIn(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SignIn());

@@ -14,6 +14,17 @@
             <Image Source="gametitle.png"
                    HeightRequest="200"/>
 
+            <Grid x:Name="GameGrid" HeightRequest="400" WidthRequest="350"
+                  BackgroundColor="LightBlue"
+                  VerticalOptions="Center"
+                  Padding="5"
+                  ColumnSpacing="5"
+                  RowSpacing="5"
+                  RowDefinitions="*,*,*,*,*,*"
+                  ColumnDefinitions="*,*,*,*,*">
+
+            </Grid>
+            
             <Button x:Name="signInbtn" Text="Sign In?" Clicked="signIn"
                     WidthRequest="100"/>
 
