@@ -1,4 +1,7 @@
-﻿namespace Wordle
+﻿using System.Collections.ObjectModel;
+using System.Net.Http;
+
+namespace Wordle
 {
     public partial class MainPage : ContentPage
     {
@@ -15,48 +18,45 @@
         public MainPage()
         {
             InitializeComponent();
-            Title = "Welcome : " + userName;
+            Task task = getGameWords();
+            DisplayAlert("Test", correctWord, "Okay");
         }
 
         public async Task getGameWords()
         {
-            string target = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "GameWords.txt");
-            if(File.Exists(target))
+            /*
+            if (gameWords.Count > 0)
             {
-                //Read file into a list
-                StreamReader readToList = new StreamReader(target);
-                string addMe = "Default";
-                while ((addMe = readToList.ReadLine()) != null)
+                return;
+            }*/
+            targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "words.txt");
+            if (!File.Exists(targetFile))
+            {
+                http = new HttpClient();
+                var response = await http.GetAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
+
+                if (response.IsSuccessStatusCode)
                 {
-                    gameWords.Add(addMe);
+                    string contents = await response.Content.ReadAsStringAsync();
+                    using (StreamWriter writer = new StreamWriter(targetFile))
+                    {
+                        writer.Write(contents);
+                    }
                 }
-                readToList.Close();
             }
             else
             {
-                var hub = await http.GetAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
-                if(hub != null)
+                using (StreamReader s = new StreamReader(targetFile))
                 {
-                    string listOfWords = await hub.Content.ReadAsStringAsync();
-                    gameWords = new List<string>();
-
-                    //Saving the contents to a file
-                    StreamWriter writeWords = new StreamWriter(target);
+                    string line = "";
+                    while ((line = s.ReadLine()) != null)
                     {
-                        writeWords.Write(listOfWords);
+                        gameWords.Add(line);
+                        Console.WriteLine(line);
                     }
-                    writeWords.Close();
-
-                    //Reading the words from the file
-                    StreamReader readToList = new StreamReader(target);
-                    string addMe = "Default";
-                    while((addMe =  readToList.ReadLine()) !=null)
-                    {
-                        gameWords.Add(addMe);
-                    }
-                    readToList.Close();
                 }
             }
+            getRandWord();
         }
 
         public void getRandWord()
