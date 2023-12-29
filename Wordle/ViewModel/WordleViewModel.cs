@@ -10,7 +10,7 @@ namespace Wordle.ViewModel
 {
     public partial class WordleViewModel: ObservableObject
     {
-        //Declaring Variables 
+        //Declaring Variables
         int currentRow;
         int currentCol;
         char[] answer;

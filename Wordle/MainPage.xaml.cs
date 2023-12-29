@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Wordle
 {
@@ -8,27 +11,26 @@ namespace Wordle
         //Declaring Variables
         private Random rand;
         private List<string> gameWords;
-        HttpClient http;
+        private HttpClient http;
         private string userGuess;
         private string correctWord;
         private int gamesPlayed;
+        private int numWords;
         public string userName;
         private string password;
         public string targetFile;
         public MainPage()
         {
             InitializeComponent();
+            gameWords = new List<string>();
+            rand = new Random();
+            numWords = gameWords.Count;
             Task task = getGameWords();
             DisplayAlert("Test", correctWord, "Okay");
         }
 
         public async Task getGameWords()
         {
-            /*
-            if (gameWords.Count > 0)
-            {
-                return;
-            }*/
             targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "words.txt");
             if (!File.Exists(targetFile))
             {
@@ -44,16 +46,19 @@ namespace Wordle
                     }
                 }
             }
-            else
+            readWordsList(targetFile);
+        }
+
+        public void readWordsList(string filename)
+        {
+            using (StreamReader s = new StreamReader(filename))
             {
-                using (StreamReader s = new StreamReader(targetFile))
+                string line = "";
+                while ((line = s.ReadLine()) != null)
                 {
-                    string line = "";
-                    while ((line = s.ReadLine()) != null)
-                    {
-                        gameWords.Add(line);
-                        Console.WriteLine(line);
-                    }
+                    gameWords.Add(line);
+                    Console.WriteLine(line);
+                    numWords++;
                 }
             }
             getRandWord();
