@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Microsoft.Maui.Storage;
 
 namespace Wordle
 {
@@ -44,24 +45,34 @@ namespace Wordle
                     {
                         writer.Write(contents);
                     }
-                }
-            }
-            readWordsList(targetFile);
-        }
 
-        public void readWordsList(string filename)
-        {
-            using (StreamReader s = new StreamReader(filename))
-            {
-                string line = "";
-                while ((line = s.ReadLine()) != null)
-                {
-                    gameWords.Add(line);
-                    Console.WriteLine(line);
-                    numWords++;
+                    using (StreamReader s = new StreamReader(targetFile))
+                    {
+                        string line = "";
+                        while ((line = s.ReadLine()) != null)
+                        {
+                            gameWords.Add(line);
+                            Console.WriteLine(line);
+                            numWords++;
+                        }
+                    }
+                    getRandWord();
                 }
             }
-            getRandWord();
+            else
+            {
+                using (StreamReader s = new StreamReader(targetFile))
+                {
+                    string line = "";
+                    while ((line = s.ReadLine()) != null)
+                    {
+                        gameWords.Add(line);
+                        Console.WriteLine(line);
+                        numWords++;
+                    }
+                }
+                getRandWord();
+            }
         }
 
         public void getRandWord()

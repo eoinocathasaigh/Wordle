@@ -14,16 +14,24 @@ namespace Wordle.ViewModel
         int currentRow;
         int currentCol;
         char[] answer;
+        char[] userGuess;
 
         //Correct Letters
         public class Words
         {
-            public List<Letters> letters { get; set; }
+            public Letters[] CorrectLetters { get; set; }
+            public void Validate(char[] correctWord)
+            {
+
+            }
         }
 
-        public class Letters
+        public partial class Letters: ObservableObject
         {
-            public char userInput { get; set; }
+            [ObservableProperty]
+            private char userInput;
+            [ObservableProperty]
+            private Color colorChange;
             public char CorrectLetter {  get; set; }
             public Color bgCol { get; set; }
         }
