@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Storage;
+using Wordle.ViewModel;
 
 namespace Wordle
 {
@@ -21,9 +22,10 @@ namespace Wordle
         private string password;
         public string targetFile;
         public bool isBusy;
-        public MainPage()
+        public MainPage(WordleViewModel newView)
         {
             InitializeComponent();
+            BindingContext = newView;
             gameWords = new List<string>();
             rand = new Random();
             numWords = gameWords.Count;

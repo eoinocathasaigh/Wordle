@@ -14,6 +14,22 @@ namespace Wordle.ViewModel
         char[] answer;
         char[] userGuess;
 
+        //Constructor to initialize some of the aspects of the ViewModel
+        public WordleViewModel()
+        {
+            currentRow = new GameRows[6]
+            {
+                new GameRows(),
+                new GameRows(),
+                new GameRows(),
+                new GameRows(),
+                new GameRows(),
+                new GameRows()
+            };
+            //Testing storing the correct answer
+            answer = "tests".ToCharArray();
+        }
+
         //Getting the user to the next time every time they hit enter
         [ICommand]
         public void nextLine()

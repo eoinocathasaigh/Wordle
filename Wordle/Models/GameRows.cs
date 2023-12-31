@@ -1,13 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wordle.Models
 {
-    public partial class GameRows: ObservableObject
+    public class GameRows
     {
         //Declaring Variables
         int currentRow;
@@ -15,24 +10,34 @@ namespace Wordle.Models
         char[] answer;
         char[] userGuess;
 
-        //Correct Letters
-        public class Words
+        //Constructor to initialize some of the variables of the Model class
+        public GameRows()
         {
-            public Letters[] CorrectLetters { get; set; }
-            public void ValidateAnswer(char[] correctWord)
+            CorrectLetters = new Letters[5]
             {
-
-            }
+                new Letters(),
+                new Letters(),
+                new Letters(),
+                new Letters(),
+                new Letters(),
+            };
         }
 
-        public partial class Letters : ObservableObject
+        //Correct Letters
+        public Letters[] CorrectLetters { get; set; }
+        public void ValidateAnswer(char[] correctWord)
         {
-            [ObservableProperty]
-            private char userInput;
-            [ObservableProperty]
-            private Color colorChange;
-            public char CorrectLetter { get; set; }
-            public Color bgCol { get; set; }
+
         }
+        
+    }
+    public partial class Letters : ObservableObject
+    {
+        [ObservableProperty]
+        private char userInput;
+        [ObservableProperty]
+        private Color colorChange;
+        public char CorrectLetter { get; set; }
+        public Color bgCol { get; set; }
     }
 }

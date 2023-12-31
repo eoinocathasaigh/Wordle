@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Wordle.MainPage"
              xmlns:viewmodel="clr-namespace:Wordle.ViewModel"
+             xmlns:models="clr-namespace:Wordle.Models"
              x:DataType="viewmodel:WordleViewModel"
              Title="Welcome to Wordle">
 
@@ -15,6 +16,23 @@
             <!--Content of our main page-->
             <Image Source="gametitle.png"
                    HeightRequest="150"/>
+            <Grid RowDefinitions="*, Auto">
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding rows}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:GameRows">
+                            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Letters}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Letters">
+                                        <Button Style="{DynamicResource LettersColor}"
+                                                Text="{Binding UserInput}"
+                                                BackgroundColor="{Binding bgCol}"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </Grid>
             <Button x:Name="signInbtn" Text="Sign In?" Clicked="signIn"
                     WidthRequest="100"/>
         </VerticalStackLayout>
