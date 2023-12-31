@@ -1,3 +1,5 @@
+using Wordle.ViewModel;
+
 namespace Wordle;
 
 public partial class SignIn : ContentPage

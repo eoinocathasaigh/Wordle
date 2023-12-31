@@ -16,15 +16,17 @@
             <!--Content of our main page-->
             <Image Source="gametitle.png"
                    HeightRequest="150"/>
+            
             <Grid RowDefinitions="*, Auto">
-                <VerticalStackLayout BindableLayout.ItemsSource="{Binding rows}">
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding CurrentRow}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="models:GameRows">
-                            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Letters}">
+                            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding CorrectLetters}"
+                                                   HorizontalOptions="Center">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate x:DataType="models:Letters">
                                         <Button Style="{DynamicResource LettersColor}"
-                                                Text="{Binding UserInput}"
+                                                Text="Test"
                                                 BackgroundColor="{Binding bgCol}"/>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
@@ -33,8 +35,8 @@
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
             </Grid>
-            <Button x:Name="signInbtn" Text="Sign In?" Clicked="signIn"
-                    WidthRequest="100"/>
+            <Button x:Name="signInbtn" Text="?" Clicked="signIn"
+                    WidthRequest="100" BackgroundColor="Gray" TextColor="White"/>
         </VerticalStackLayout>
     </ScrollView>
 

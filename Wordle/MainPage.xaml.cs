@@ -33,6 +33,17 @@ namespace Wordle
             DisplayAlert("Test", correctWord, "Okay");
         }
 
+        public MainPage()
+        {
+            InitializeComponent();
+            BindingContext = new WordleViewModel();
+            gameWords = new List<string>();
+            rand = new Random();
+            numWords = gameWords.Count;
+            Task task = getGameWords();
+            DisplayAlert("Test", correctWord, "Okay");
+        }
+
         public async Task getGameWords()
         {
             targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "words.txt");

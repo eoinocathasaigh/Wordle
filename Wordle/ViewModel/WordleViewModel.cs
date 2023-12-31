@@ -31,7 +31,7 @@ namespace Wordle.ViewModel
         }
 
         //Getting the user to the next time every time they hit enter
-        [ICommand]
+        //[ICommand]
         public void nextLine()
         {
             //Controlling when to move the user to the next row
@@ -54,8 +54,7 @@ namespace Wordle.ViewModel
                 }
             }
         }
-
-        [ICommand]
+        //[ICommand]
         public void userEntry()
         {
             if(currentColumnIndex == 5)
