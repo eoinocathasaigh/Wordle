@@ -1,39 +1,51 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Wordle.Models;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wordle.ViewModel
 {
     public partial class WordleViewModel: ObservableObject
     {
         //Declaring Variables
-        int currentRow;
-        int currentCol;
+        [ObservableProperty]
+        public GameRows[] currentRow;
+        private int currentRowIndex;
+        private int currentColumnIndex;
         char[] answer;
         char[] userGuess;
 
-        //Correct Letters
-        public class Words
+        //Getting the user to the next time every time they hit enter
+        [ICommand]
+        public void nextLine()
         {
-            public Letters[] CorrectLetters { get; set; }
-            public void Validate(char[] correctWord)
+            //Controlling when to move the user to the next row
+            var isValid = true;
+            if(isValid)
             {
+                if(currentColumnIndex != 5)
+                {
+                    return;
+                }
 
+                if(currentRowIndex == 5)
+                {
+
+                }
+                else
+                {
+                    currentRowIndex++;
+                    currentColumnIndex = 0;
+                }
             }
         }
 
-        public partial class Letters: ObservableObject
+        [ICommand]
+        public void userEntry()
         {
-            [ObservableProperty]
-            private char userInput;
-            [ObservableProperty]
-            private Color colorChange;
-            public char CorrectLetter {  get; set; }
-            public Color bgCol { get; set; }
+            if(currentColumnIndex == 5)
+            {
+                return;
+            }
         }
     }
 }

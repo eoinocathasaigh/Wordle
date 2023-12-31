@@ -20,6 +20,7 @@ namespace Wordle
         public string userName;
         private string password;
         public string targetFile;
+        public bool isBusy;
         public MainPage()
         {
             InitializeComponent();
@@ -86,6 +87,7 @@ namespace Wordle
             Navigation.PushAsync(new SignIn());
         }
 
+        
     }
 
 }
