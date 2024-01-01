@@ -7,7 +7,7 @@ If a letter from their guess is in the correct word and in the correct position 
 
 If the user can successfully guess the random word by the 6th guess they will win the game
 
-Further functions include:
+Further functions I hope to include:
 The ability to sign into an account and to keep track of the users statistics
 A settings menu in which the user can set things such as the dark mode
 A leaderboard to keep track of the highest number of wins and who it belongs to
