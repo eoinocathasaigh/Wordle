@@ -25,14 +25,58 @@
                                                    HorizontalOptions="Center">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate x:DataType="models:Letters">
-                                        <Button Style="{DynamicResource LettersColor}"
-                                                Text="Test"
-                                                BackgroundColor="{Binding bgCol}"/>
+                                        <Frame Style="{DynamicResource gameBoard}"
+                                               BackgroundColor="{Binding bgCol}">
+                                            <Label Text="{Binding UserInput}"
+                                                   FontSize="Large"/>
+                                        </Frame>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+                
+                <!--Keyboard that will appear for the user-->
+                <VerticalStackLayout Grid.Row = "1" Spacing="4">
+                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding KeyboardRow1}"
+                                           HorizontalOptions="Center"
+                                           Spacing="2">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="{x:Null}">
+                                <Button Style="{DynamicResource keyboardStyle}"
+                                        Text="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WordleViewModel}}, Path=EnterLetterCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding KeyboardRow2}"
+                                           HorizontalOptions="Center"
+                                           Spacing="2">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="{x:Null}">
+                                <Button Style="{DynamicResource keyboardStyle}"
+                                        Text="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WordleViewModel}}, Path=EnterLetterCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding KeyboardRow3}"
+                                           HorizontalOptions="Center"
+                                           Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="{x:Null}">
+                                <Button Style="{DynamicResource keyboardStyle}"
+                                        Text="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WordleViewModel}}, Path=EnterLetterCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Grid>
             <Button x:Name="signInbtn" Text="?" Clicked="signIn"

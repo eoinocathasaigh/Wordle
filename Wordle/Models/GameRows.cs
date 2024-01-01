@@ -25,11 +25,29 @@ namespace Wordle.Models
 
         //Correct Letters
         public Letters[] CorrectLetters { get; set; }
-        public void ValidateAnswer(char[] correctWord)
+        public bool ValidateAnswer(char[] correctWord)
         {
+            int count = 0;
 
-        }
-        
+            for (int i = 0; i < CorrectLetters.Length; i++)
+            {
+                var letter = CorrectLetters[i];
+                if (letter.UserInput == answer[i])
+                {
+                    letter.ColorChange = Colors.Green;
+                    count++;
+                }
+                else if (answer.Contains(letter.UserInput))
+                {
+                    letter.ColorChange = Colors.Yellow;
+                }
+                else
+                {
+                    letter.ColorChange = Colors.Gray;
+                }
+            }
+            return count == 5;
+        }   
     }
     public partial class Letters : ObservableObject
     {
