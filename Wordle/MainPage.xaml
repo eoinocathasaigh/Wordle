@@ -79,7 +79,7 @@
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Grid>
-            <Button x:Name="signInbtn" Text="?" Clicked="signIn"
+            <Button x:Name="signInbtn" Text="?" Clicked="SignIn"
                     WidthRequest="100" BackgroundColor="Gray" TextColor="White"/>
         </VerticalStackLayout>
     </ScrollView>

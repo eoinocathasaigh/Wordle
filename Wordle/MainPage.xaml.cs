@@ -22,6 +22,7 @@ namespace Wordle
         private string password;
         public string targetFile;
         public bool isBusy;
+        private bool navTo = false;
         public MainPage(WordleViewModel newView)
         {
             InitializeComponent();
@@ -30,9 +31,8 @@ namespace Wordle
             rand = new Random();
             numWords = gameWords.Count;
             Task task = getGameWords();
-            DisplayAlert("Test", correctWord, "Okay");
         }
-
+        
         public MainPage()
         {
             InitializeComponent();
@@ -93,11 +93,12 @@ namespace Wordle
         {
             rand = new Random();
             correctWord = gameWords[rand.Next(gameWords.Count)];
-
         }
-        private void signIn(object sender, EventArgs e)
+        private async void SignIn(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SignIn());
+            SignIn signPage = new SignIn();
+            navTo = true;
+            await Navigation.PushAsync(signPage);
         }
 
         
