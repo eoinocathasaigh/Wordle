@@ -2,11 +2,11 @@
 {
     public partial class App : Application
     {
-        public App(MainPage newPage)
+        public App(WelcomePage newGame)
         {
             InitializeComponent();
 
-            MainPage = newPage;
+            MainPage = newGame;
         }
     }
 }
