@@ -1,61 +1,61 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Wordle.Models
-{
-    public class GameRows
-    {
-        //Declaring Variables
-        int currentRow;
-        int currentCol;
-        char[] answer;
-        char[] userGuess;
+namespace Wordle.Model;
 
-        //Constructor to initialize some of the variables of the Model class
-        public GameRows()
+public class GameRows
+{
+    DisplayRotation rotation = new DisplayRotation();
+    public GameRows()
+    {
+
+        Letters = new Letter[5];
+        for (int i = 0; i < Letters.Length; i++)
         {
-            CorrectLetters = new Letters[5]
+            Letters[i] = new Letter();
+        }
+    }
+
+    public Letter[] Letters { get; set; }
+
+    public bool ValidateWithDelay(char[] correctAnswer)
+    {
+        int count = 0;
+
+        //loops through stuff.
+        for (int i = 0; i < Letters.Length; i++)
+        {
+            var letter = Letters[i];
+            if (letter.Input == correctAnswer[i])
             {
-                new Letters(),
-                new Letters(),
-                new Letters(),
-                new Letters(),
-                new Letters(),
-            };
+                letter.Color = Colors.Green;
+                count++;
+            }
+            else if (correctAnswer.Contains(letter.Input))
+            {
+                letter.Color = Colors.Yellow;
+            }
+            else
+            {
+                letter.Color = Colors.Gray;
+            }
+
+            Task.Delay(1000);
         }
 
-        //Correct Letters
-        public Letters[] CorrectLetters { get; set; }
-        public bool ValidateAnswer(char[] correctWord)
-        {
-            int count = 0;
+        return count == 5;
+    }
+}
 
-            for (int i = 0; i < CorrectLetters.Length; i++)
-            {
-                var letter = CorrectLetters[i];
-                if (letter.UserInput == answer[i])
-                {
-                    letter.ColorChange = Colors.Green;
-                    count++;
-                }
-                else if (answer.Contains(letter.UserInput))
-                {
-                    letter.ColorChange = Colors.Yellow;
-                }
-                else
-                {
-                    letter.ColorChange = Colors.Gray;
-                }
-            }
-            return count == 5;
-        }   
-    }
-    public partial class Letters : ObservableObject
+public partial class Letter : ObservableObject
+{
+    public Letter()
     {
-        [ObservableProperty]
-        private char userInput;
-        [ObservableProperty]
-        private Color colorChange;
-        public char CorrectLetter { get; set; }
-        public Color bgCol { get; set; }
+        Color = Colors.White;
     }
+
+    [ObservableProperty]
+    private char input;
+
+    [ObservableProperty]
+    private Color color;
 }

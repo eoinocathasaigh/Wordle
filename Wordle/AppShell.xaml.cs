@@ -1,4 +1,6 @@
-﻿namespace Wordle
+﻿using Wordle.ViewModel;
+
+namespace Wordle
 {
     public partial class AppShell : Shell
     {

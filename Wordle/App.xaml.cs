@@ -1,12 +1,22 @@
-﻿namespace Wordle
+﻿using Wordle.ViewModel;
+
+namespace Wordle
 {
     public partial class App : Application
     {
-        public App(WelcomePage newGame)
-        {
-            InitializeComponent();
+        //Variable to control the name at the top of each page
+        public static string CurrentUserName { get; set; }
+        public static bool IsLoggedIn { get; internal set; }
+        public static bool SoundMuted { get; internal set; }
+        public static bool isLightTheme {  get; internal set; } = true;
 
-            MainPage = newGame;
+        public App()
+        {
+
+            InitializeComponent();
+            MainPage = new AppShell();
+            
+            
         }
     }
 }

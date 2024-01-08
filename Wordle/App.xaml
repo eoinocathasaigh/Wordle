@@ -9,31 +9,35 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Color x:Key="PrimaryCol">Blue</Color>
-            <Color x:Key="SecondaryCol">White</Color>
 
-            <Style x:Name="lblStyles" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryCol}"/>
-                <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Color x:Key="PrimaryTextColor">Black</Color>
+            <Color x:Key="SecondaryTextColor">White</Color>
+            <Color x:Key="PrimaryBackgroundColor">Wheat</Color>
+            <Color x:Key="ButtonColor">Blue</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
             </Style>
 
-            <Style x:Name="gameBoard" TargetType="Frame">
-                <Setter Property="BorderColor" Value="LightGray"/>
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="Padding" Value="14,10"/>
-                <Setter Property="WidthRequest" Value="60"/>
-                <Setter Property="HeightRequest" Value="70"/>
+            <Style x:Key="LetterFrame" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Padding" Value="10,10" />
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="60"/>
             </Style>
 
-            <Style x:Name="keyboardStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Gray"/>
-                <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Style x:Key="LetterButton" TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryTextColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="BorderColor" Value="LightGray"/>
                 <Setter Property="BorderWidth" Value="2"/>
                 <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="WidthRequest" Value="35"/>
-                <Setter Property="HeightRequest" Value="50"/>
-                <Setter Property="Padding" Value="7"/>
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Padding" Value="3" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -18,9 +18,10 @@ namespace Wordle
 
             builder.Services.AddTransient<WordleViewModel>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<SignIn>();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
